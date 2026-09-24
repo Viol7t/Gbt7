@@ -1,0 +1,152 @@
+:root{
+    --bg: #ffc0cb;
+    --card:#fff;
+    --accent:#7F00FF;
+    --muted:#6b6b6b;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    font-family: 'Segoe UI', sans-serif;
+    margin:0;
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--bg), var(--accent));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #222;
+}
+
+.page-wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* style für text */
+
+#Birthday-card{
+    width: 100%;
+    max-width: 600px;
+    margin: 70px auto 40px;
+    padding: 40px 30px;
+    background: linear-gradient(125deg, #5e2028, #612a6f, #ffc0cb);
+    border-radius: 20px;
+    position: relative;
+    overflow: visible;
+    color: white;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(255, 100, 0, 0.4);
+    animation: glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 100, 0, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(255, 100, 0, 0.8);
+    }
+}
+
+#Birthday-card h1{
+    font-size: 2.2rem;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+}
+
+.card-text p{
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.signature{
+    margin-top: 24px !important;
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+}
+
+/* Bilder als Sticker an den Kartenecken */
+
+.sticker{
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border: 6px solid white;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+    z-index: 3;
+    transition: transform 0.3s ease;
+}
+
+.sticker-1{
+    top: -45px;
+    left: -25px;
+    transform: rotate(-12deg);
+}
+
+.sticker-2{
+    bottom: -35px;
+    right: -20px;
+    transform: rotate(10deg);
+}
+
+.sticker:hover{
+    transform: scale(1.08) rotate(0deg);
+    z-index: 5;
+}
+
+/* Button */
+
+.button{
+    display: inline-block;
+    margin-bottom: 40px;
+    padding: 12px 28px;
+    background: white;
+    color: var(--bg);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+}
+
+/* Handy: Sticker werden Teil des normalen Layouts statt an den Ecken zu kleben */
+
+@media (max-width: 600px){
+    #Birthday-card{
+        margin-top: 20px;
+        padding-top: 30px;
+    }
+
+    .sticker{
+        position: static;
+        display: inline-block;
+        width: 90px;
+        height: 90px;
+        transform: none !important;
+        margin: 0 8px 16px;
+        vertical-align: middle;
+    }
+
+    .sticker-1{
+        transform: rotate(-8deg) !important;
+    }
+
+    .sticker-2{
+        transform: rotate(6deg) !important;
+    }
+}
+#jpc-image{
+    cursor: pointer;
+}

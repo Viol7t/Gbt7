@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geburtstag</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Sperr-Zustand für die Glückwunsch-Buttons, bis der Geburtstag da ist */
+        .button.locked {
+            opacity: .45;
+            cursor: not-allowed;
+            filter: grayscale(60%);
+            pointer-events: none;
+        }
+        .button.locked .check {
+            display: none;
+        }
+        .button-switch {
+            position: relative;
+        }
+        .lock-badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            font-size: .85rem;
+            background: #fff;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,.25);
+        }
+        .lock-notice {
+            display: none;
+            width: 100%;
+            max-width: 520px;
+            margin: 14px auto 0;
+            color: #ffffff;
+        }
+        .lock-notice.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+    <button id="reset-btn" class="reset-button" title="Fortschritt zurücksetzen">↺ Zurücksetzen</button>
+
+    <div class="confetti">
+        <span>🎈</span><span>🎉</span><span>🎈</span><span>✨</span><span>🎈</span><span>🎊</span>
+    </div>
+
+    <header>
+        <div class="eyebrow-badge">Happy Birthday</div>
+        <h1>Alles Liebe, Jana</h1>
+    </header>
+
+    <!-- Countdown für den besonderen Tag -->
+    <section class="top-grid">
+        <div class="card countdown-card">
+            <div class="small">Dein Geburtstag ist in</div>
+            <div id="geburtstags-zähler" class="countdown">–</div>
+            <div class="small">Nächster Geburtstag: <span id="nächster-geburtstag"></span></div>
+        </div>
+    </section>
+
+    <div class="hint-box">
+        <span class="hint-pin">📌</span>
+        <span class="hint-icon">✨</span>
+        <div class="hint-text">
+            <strong>Klick dich durch!</strong>
+            <span>Manche Bilder halten eine Überraschung bereit</span>
+        </div>
+    </div>
+
+    <div class="progress-wrap">
+        <div class="progress-label">
+            <span id="progress-count">0</span> von 7 Glückwünschen gelesen
+        </div>
+        <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+    </div>
+
+    <div class="section-divider">
+        <span>Hier sind die Glückwünsche von jeweils</span>
+    </div>
+
+    <p id="lock-notice" class="card lock-notice">🔒 Die Glückwünsche öffnen sich erst am Geburtstag selbst.</p>
+
+    <!-- Geschenk-Knopf: erst sichtbar, wenn alle 7 gelesen wurden -->
+    <div class="button-switch" id="geschenk-wrap" style="display:none;">
+        <a href="geschenk.html" class="button gift-button">
+            <span class="avatar">🎁</span>
+            <span class="name">Dein Geschenk</span>
+        </a>
+    </div>
+
+    <section class="button-section">
+        <div class="button-switch">
+            <a href="Chinedu.html" class="button" data-name="Chinedu">
+                <span class="avatar">C</span>
+                <span class="name">Chinedu</span>
+                <span class="check">✓</span>
+            </a>
+        </div>
+        <div class="button-switch">
+            <a href="Ian.html" class="button" data-name="Ian">
+                <span class="avatar">I</span>
+                <span class="name">Ian</span>
+                <span class="check">✓</span>
+            </a>
+        </div>
+        <div class="button-switch">
+            <a href="Midolay.html" class="button" data-name="Midolay">
+                <span class="avatar">M</span>
+                <span class="name">Midolay</span>
+                <span class="check">✓</span>
+            </a>
+        </div>
+        <div class="button-switch">
+            <a href="Michelle.html" class="button" data-name="Michelle">
+                <span class="avatar">M</span>
+                <span class="name">Michelle</span>
+                <span class="check">✓</span>
+            </a>
+        </div>
+        <div class="button-switch">
+            <a href="Bonnie.html" class="button" data-name="Bonnie">
+                <span class="avatar">B</span>
+                <span class="name">Bonnie</span>
+                <span class="check">✓</span>
+            </a>
+        </div>
+        <div class="button-switch">
+            <a href="Timon.html" class="button" data-name="Timon">
+                <span class="avatar">T</span>
+                <span class="name">Timon</span>
+                <span class="check">✓</span>
+            </a>
+        </div>
+        <div class="button-switch">
+            <a href="Jordan.html" class="button" data-name="Jordan">
+                <span class="avatar">J</span>
+                <span class="name">Jordan</span>
+                <span class="check">✓</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- script.js nur EINMAL einbinden (Countdown, definiert Jana_Bday) -->
+    <script src="script.js"></script>
+
+    <!-- Sperre der Glückwunsch-Buttons bis zum Geburtstag -->
+    <script>
+        (function () {
+            const now = new Date();
+            const isUnlocked =
+                (now.getMonth() + 1 > Jana_Bday.month) ||
+                (now.getMonth() + 1 === Jana_Bday.month && now.getDate() >= Jana_Bday.day);
+
+            if (!isUnlocked) {
+                document.querySelectorAll('.button[data-name]').forEach(function (btn) {
+                    btn.classList.add('locked');
+                    btn.setAttribute('aria-disabled', 'true');
+                    btn.setAttribute('tabindex', '-1');
+
+                    const lock = document.createElement('span');
+                    lock.className = 'lock-badge';
+                    lock.textContent = '🔒';
+                    btn.parentElement.appendChild(lock);
+
+                    btn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                    });
+                });
+
+                document.getElementById('lock-notice').classList.add('show');
+            }
+        })();
+    </script>
+
+    <!-- Fortschritt + Geschenk-Knopf -->
+    <script>
+        const guestButtons = document.querySelectorAll('.button[data-name]');
+        const totalGuests = guestButtons.length;
+
+        function updateProgress() {
+            let visitedCount = 0;
+
+            guestButtons.forEach(function (btn) {
+                const name = btn.getAttribute('data-name');
+                if (sessionStorage.getItem('visited_' + name) === 'true') {
+                    btn.classList.add('visited');
+                    visitedCount++;
+                }
+            });
+
+            document.getElementById('progress-count').textContent = visitedCount;
+            document.getElementById('progress-fill').style.width =
+                (visitedCount / totalGuests * 100) + '%';
+
+            // Geschenk-Knopf anzeigen, wenn alle gelesen wurden
+            if (visitedCount === totalGuests) {
+                document.getElementById('geschenk-wrap').style.display = 'flex';
+            }
+        }
+
+        guestButtons.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                if (btn.classList.contains('locked')) return;
+                const name = btn.getAttribute('data-name');
+                sessionStorage.setItem('visited_' + name, 'true');
+            });
+        });
+
+        // Reset-Knopf oben rechts
+        document.getElementById('reset-btn').addEventListener('click', function () {
+            if (!confirm('Fortschritt wirklich zurücksetzen?')) return;
+
+            guestButtons.forEach(function (btn) {
+                sessionStorage.removeItem('visited_' + btn.getAttribute('data-name'));
+                btn.classList.remove('visited');
+            });
+
+            document.getElementById('geschenk-wrap').style.display = 'none';
+
+            updateProgress();
+        });
+
+        updateProgress();
+
+        // Falls man mit "Zurück" auf die Seite kommt (Browser-Cache)
+        window.addEventListener('pageshow', updateProgress);
+    </script>
+
+</body>
+</html>

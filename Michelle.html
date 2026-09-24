@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang='de'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Michelles Glückwünsche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesm.css">
+</head>
+<body>
+
+    <div class="page-wrap">
+
+        <div class="clip-gallery">
+            <div class="clip clip-main">
+                <img src="Mich2.jpg" alt="Michelle">
+            </div>
+            <div class="clip clip-side clip-2">
+                <img src="Mich3.jpg" alt="Michelle">
+            </div>
+            <div class="clip clip-side clip-3">
+                <img src="Mich1.jpg" alt="Michelle">
+            </div>
+        </div>
+
+        <div id="Birthday-card">
+            <div class="level-badge">Alles gute</div>
+            <span class="quote-mark">“</span>
+
+            <img src="tracer.jpg" alt="Tracer" id="tracer-image" class="tracer-badge">
+
+            <div class="card-text">
+                <h1>Liebe Jana</h1>
+                <p>
+                    Herzlichen Glückwunsch zum Geburtstag und viel Gesundheit und Glück im neuen Lebensjahr.
+                    Möge es voller friendly DbD-Killer und epic MVPs sein 
+                </p>
+                <p>
+                    Ich schätze mich sehr glücklich, eine so tolle Freundin gefunden zu haben. Du bist amazing.
+                </p>
+                <p class="signature">Dein 1-Trick<br>Michelle</p>
+            </div>
+        </div>
+
+        <a href="index.html" class="button">Zurück</a>
+
+    </div>
+
+    <audio id="tracer-sound" src="tracer_hohoho.mp3"></audio>
+
+    <script>
+        document.getElementById('tracer-image').addEventListener('click', function() {
+            const sound = document.getElementById('tracer-sound');
+            if (sound.paused) {
+                sound.play();
+            } else {
+                sound.pause();
+                sound.currentTime = 0;
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Von Chinedu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stlylesC.css">
+</head>
+<body>
+
+    <div class="hearts">
+        <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
+    </div>
+
+    <div class="page-wrap">
+
+        <div id="Birthday-card">
+            <div class="seal">♥</div>
+
+            <div class="card-text">
+                <h1>Liebe Jana</h1>
+                <p class="lead">Alles Gute</p>
+
+                <p>
+                    Ich wünsche dir alles Gute zum Geburtstag! Möge dein Tag voller Freude, Liebe und unvergesslicher Momente sein 
+                    – genau so besonders, wie du für mich bist. Möge das kommende Jahr dir Glück, 
+                    Gesundheit und Erfolg bringen.
+
+                </p>
+
+                <p>
+                    Feiere diesen besonderen Tag in vollen Zügen und genieße jeden Augenblick.
+                    Möge dein Geburtstag der Beginn eines wundervollen Kapitels in deinem Leben sein.
+                </p>
+
+                <div class="divider">♥</div>
+
+                <p class="signature">Von Chinedu</p>
+            </div>
+
+            <div class="polaroid p1">
+                <img src="JandE.jpg" alt="Unsere Lieblingsserie" id="jande-image">
+                <p class="polaroid-caption"> ♥</p>
+            </div>
+        </div>
+
+        <a href="index.html" class="button">Zurück</a>
+
+    </div>
+
+    <audio id="jande-sound" src="EkkoJinxsong.mp3"></audio>
+
+    <script>
+        document.getElementById('jande-image').addEventListener('click', function() {
+            const sound = document.getElementById('jande-sound');
+            if (sound.paused) {
+                sound.play();
+            } else {
+                sound.pause();
+                sound.currentTime = 0;
+            }
+        });
+    </script>
+
+</body>
+</html>

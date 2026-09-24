@@ -1,0 +1,218 @@
+:root{
+    --bg:#7F00FF;
+    --card:#fff;
+    --accent:#06402B;
+    --gold:#e8c27a;
+    --muted:#6b6b6b;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    font-family: 'Segoe UI', sans-serif;
+    margin:0;
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--bg), var(--accent));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #222;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Schwebende Herzen im Hintergrund */
+
+.hearts{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hearts span{
+    position: absolute;
+    color: rgba(255,255,255,0.35);
+    font-size: 1.6rem;
+    animation: rise 10s linear infinite;
+}
+
+.hearts span:nth-child(1){ left: 8%;  animation-delay: 0s;  font-size: 1.2rem; }
+.hearts span:nth-child(2){ left: 22%; animation-delay: 2s;  font-size: 2rem; }
+.hearts span:nth-child(3){ left: 40%; animation-delay: 4s;  font-size: 1.4rem; }
+.hearts span:nth-child(4){ left: 60%; animation-delay: 1s;  font-size: 1.8rem; }
+.hearts span:nth-child(5){ left: 78%; animation-delay: 3s;  font-size: 1.3rem; }
+.hearts span:nth-child(6){ left: 90%; animation-delay: 5s;  font-size: 2.2rem; }
+
+@keyframes rise {
+    0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(20deg); opacity: 0; }
+}
+
+.page-wrap{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Karte */
+
+#Birthday-card{
+    width: 100%;
+    max-width: 600px;
+    margin: 60px auto 20px;
+    padding: 50px 36px 40px;
+    background: linear-gradient(125deg, #5e2028, #612a6f, #FF8DA1);
+    border-radius: 20px;
+    border: 1px solid rgba(232, 194, 122, 0.4);
+    outline: 1px solid rgba(255,255,255,0.15);
+    outline-offset: -10px;
+    position: relative;
+    overflow: visible;
+    color: white;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    animation: glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    0%   { box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
+    100% { box-shadow: 0 15px 55px rgba(255,107,138,0.5); }
+}
+
+.seal{
+    position: absolute;
+    top: -26px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 52px;
+    height: 52px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #5e2028;
+    font-size: 1.4rem;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+}
+
+#Birthday-card h1{
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 2.4rem;
+    margin: 10px 0 6px;
+}
+
+.lead{
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin: 0 0 24px;
+}
+
+.card-text p{
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin: 0 0 18px;
+    color: rgba(255,255,255,0.92);
+}
+
+.divider{
+    margin: 20px 0;
+    color: var(--gold);
+    font-size: 1.2rem;
+    letter-spacing: 12px;
+}
+
+.signature{
+    margin-top: 10px !important;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--gold);
+}
+
+/* Button */
+
+.button{
+    display: inline-block;
+    margin: 30px 0 40px;
+    padding: 12px 30px;
+    background: white;
+    color: var(--bg);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+}
+/* Polaroid-Foto, angeklebt an der Karte */
+
+.polaroid{
+    position: absolute;
+    bottom: -40px;
+    right: -20px;
+    width: 150px;
+    background: #fff;
+    padding: 10px 10px 26px 10px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+    transform: rotate(8deg);
+    transition: transform 0.3s ease;
+    z-index: 3;
+}
+
+.polaroid::before{
+    content: "";
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-4deg);
+    width: 60px;
+    height: 22px;
+    background: rgba(232, 194, 122, 0.55);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.polaroid img{
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    display: block;
+}
+
+.polaroid-caption{
+    margin: 10px 0 0;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    color: #5e2028;
+    text-align: center;
+}
+
+.polaroid:hover{
+    transform: rotate(0deg) scale(1.05);
+}
+
+/* Auf kleinen Bildschirmen: Polaroid unter die Karte statt überlappend */
+
+@media (max-width: 480px){
+    .polaroid{
+        position: static;
+        margin: 30px auto 0;
+        transform: rotate(-4deg);
+    }
+}
+
+#jande-image{
+    cursor: pointer;
+}

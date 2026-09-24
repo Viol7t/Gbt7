@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Das hohe Lied der Juno-Maid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ian.css">
+</head>
+<body>
+
+  <div class="scroll">
+    <div class="card-text">
+      <h1>Das hohe Lied der Juno-Maid</h1>
+      <span class="kicker">— ein Loblied zum Ehrentag —</span>
+
+      <p>
+        Höret her, ihr Leut’ und Scharen,
+        was sich heut’ hat zugetragen:
+        Ein Geburtstag ward erkoren,
+        und ein Jubeljahr ist geboren!
+      </p>
+      <p>
+        Zu Overwatch, dort ward sie kühn,
+        als Juno-Maid ließ sie sich blüh’n.
+        Mit Sternenflug und heil’ger Macht
+        hat sie so manchen Sieg vollbracht.
+      </p>
+      <p>
+        Doch ward ihr Herz nicht nur dort froh,
+        nein, Marvel Rivals ebenso!
+        Als Jubilee, gar licht und fein,
+        lässt sie die bunten Funken schein’n.
+        Und wechselt dann, mit wildem Lachen,
+        zu Deadpool, um Unsinn zu machen.
+      </p>
+
+      <div class="divider">✦</div>
+
+      <p>
+        In Dead by Daylight, bei finstrer Nacht,
+        wird manches Match mit Mut bestritten,
+        ob Jäger, Opfer – einerlei,
+        Hauptsache, der Spaß ist mit dabei!
+      </p>
+      <p>
+        Doch eines Wesens Herz ganz innig liebt,
+        das durch die Pokémon-Welt zieht:
+        Mew, das kleine rosa Wesen,
+        ward zum Liebling auserlesen.
+      </p>
+      <p>
+        Und wo andre Burgen bauen groß,
+        da sitzt sie vor dem Joghurt-Troß.
+        Als Joghurt-Kolossin, stark und hehr,
+        bezwingt sie Becher mehr und mehr!
+      </p>
+
+      <div class="divider">✦</div>
+
+      <p>
+        Drum hebt die Krüge, singet laut,
+        auf dass ihr heut das Glück vertraut!
+        Möge Juno stets Euch heilen,
+        und Deadpool Euch zum Lachen eilen.
+      </p>
+      <p>
+        Möge Jubilee Funken sprüh’n,
+        und Mew durch Eure Träume zieh’n.
+        Möge in jedem Joghurtbecher
+        das Schicksal werden immer frecher!
+      </p>
+      <p>
+        So wünschen wir mit frohem Sinn:
+        Alles Gute zum Geburtstag hin!
+        Bleib tapfer, lustig, wunderbar –
+        und mögest du noch viele Level älter werden, Jahr für Jahr!
+      </p>
+
+      <p class="signature">Ian</p>
+    </div>
+
+    <div class="gallery">
+      <img src="Ian1.jpg" alt="Ian">
+      <button type="button" class="sound-btn" aria-label="Sound abspielen">
+        <img src="Ian2.jpg" alt="Ian">
+      </button>
+    </div>
+
+    <audio id="ian-sound" src="ian3.mp3" preload="auto"></audio>
+
+    <a href="index.html" class="button">Zurück</a>
+  </div>
+
+  <script>
+    document.querySelector('.sound-btn').addEventListener('click', function () {
+      const audio = document.getElementById('ian-sound');
+      audio.currentTime = 0;
+      audio.play();
+    });
+  </script>
+
+</body>
+</html>

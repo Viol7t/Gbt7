@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dein Geschenk 🎁</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="stylesS.css">
+</head>
+
+<body>
+
+    <!-- Schwebende Dekoration -->
+    <div class="confetti">
+        <span>🎈</span>
+        <span>🎉</span>
+        <span>✨</span>
+        <span>🎁</span>
+        <span>💖</span>
+        <span>🎊</span>
+    </div>
+
+
+    <!-- Überschrift -->
+    <header>
+
+        <div class="eyebrow-badge">
+            Eine kleine Überraschung
+        </div>
+
+        <h1>Dein Geschenk 🎁</h1>
+
+        <p class="sub">
+            Du hast es geschafft! Jetzt wartet eine kleine Überraschung auf dich.
+        </p>
+
+    </header>
+
+
+
+    <!-- Geschenkbox -->
+    <section class="geschenk-bereich">
+
+        <div class="geschenk" onclick="geschenkOeffnen()">
+
+            <div class="schleife-links"></div>
+            <div class="schleife-rechts"></div>
+
+            <div class="deckel" id="deckel"></div>
+
+            <div class="box"></div>
+
+            <div class="band"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Überraschung -->
+    <section id="nachricht">
+
+        <div class="card">
+
+            <div class="card-icon">
+                💖
+            </div>
+
+            <h2>Überraschung!</h2>
+
+            <p>
+              Hier ist ein geschenk wofür wir alle zusammengelegt haben. Wir hoffen es gefällt dir 
+            </p>
+
+
+            <div class="gutschein">
+
+                <div class="gutschein-icon">
+                    🎟️
+                </div>
+
+                <h3></h3>
+
+                <p>
+                    Playstation Store Gutschein Code im wert von 40€
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        function geschenkOeffnen() {
+
+            const deckel = document.getElementById("deckel");
+            const nachricht = document.getElementById("nachricht");
+
+            deckel.classList.add("offen");
+
+            setTimeout(function () {
+
+                nachricht.style.display = "block";
+
+            }, 700);
+        }
+
+    </script>
+<a href="index.html" class="zurueck">← Zurück</a>
+</body>
+</html>
